@@ -1,0 +1,9 @@
+#include <stdio.h>
+main()
+{
+  char a;
+  printf(" ‰»Î\n");
+  a = getchar();
+  putchar(a);
+
+}
