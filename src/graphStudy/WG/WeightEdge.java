@@ -2,7 +2,9 @@ package graphStudy.WG;
 
 public class WeightEdge implements Comparable{
 
-    int v, w, weight;
+    private int v;
+    private int w;
+    private int weight;
 
     public WeightEdge(int v, int w, int weight){
         this.v = v;
@@ -10,15 +12,27 @@ public class WeightEdge implements Comparable{
         this.weight = weight;
     }
 
+    public int getV() {
+        return v;
+    }
+
+    public int getW() {
+        return w;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
     @Override
     public String toString() {
-        return "WeightEdge{" +
+        return "(" +
                 v +
                 "-" +
                 w +
                 ": " +
                 weight +
-                '}';
+                ')';
     }
 
     @Override
