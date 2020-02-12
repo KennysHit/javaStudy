@@ -1,4 +1,4 @@
-package graphStudy;
+package graphStudy.G;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -19,15 +19,15 @@ public class GraphBFS {
 		// TODO Auto-generated constructor stub
 		this.graph = graph;
 		visited = new boolean[graph.getV()];
-		for(int i=0;i<graph.getV();i++) {
+
+		for(int i=0;i<graph.getV();i++)
 			visited[i] = false;
-		}
-		for(int i=0;i<graph.getV();i++) {
+
+		for(int i=0;i<graph.getV();i++)
 			if(!visited[i]) {
 				bfs(i);
 				result.add(-1); //-1为一个连通分量分界线
 			}
-		}
 	}
 	
 	private void bfs(int source) {
@@ -37,12 +37,12 @@ public class GraphBFS {
 		while(!queue.isEmpty()) {
 			int out = queue.remove();
 			this.result.add(out);
-			for(int w : graph.getNeighbor(out)) {
+
+			for(int w : graph.getNeighbor(out))
 				if(!visited[w]) {
 					queue.add(w);
 					visited[w] = true;
 				}
-			}
 		}
 	}
 	

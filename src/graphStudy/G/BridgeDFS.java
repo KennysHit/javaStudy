@@ -1,4 +1,4 @@
-package graphStudy;
+package graphStudy.G;
 
 import java.util.HashSet;
 
@@ -6,25 +6,25 @@ public class BridgeDFS {
 
     private Graph graph;
     private HashSet<String> bridge =  new HashSet<String>();
-    private int record = 0;
+    private int record; //记录点的遍历次序
     private Boolean[] visited;
     private int[] order;
     private int[] low;
 
     public BridgeDFS(Graph graph){
         this.graph = graph;
+        record = 0;
         visited = new Boolean[graph.getV()];
-        for(int i=0;i<graph.getV();i++){
+
+        for(int i=0;i<graph.getV();i++)
             visited[i] = false;
-        }
+
         order = new int[this.graph.getV()];
         low = new int[this.graph.getV()];
 
-        for(int i=0;i<graph.getV();i++){
-            if(!visited[i]){
+        for(int i=0;i<graph.getV();i++)
+            if(!visited[i])
                 dfs(0,0);
-            }
-        }
 
     }
 
@@ -33,18 +33,19 @@ public class BridgeDFS {
         order[source] = record;
         low[source] = record;
         record++;
+
         for (int w: graph.getNeighbor(source)){
-            if(!visited[w]){
-                dfs(w,source);
+            if(!visited[w]) {
+                dfs(w, source);
                 low[source] = Math.min(low[source], low[w]);
-                if(order[source]<low[w]){
+                if (order[source] < low[w])
                     bridge.add(String.valueOf(source) + "-" + String.valueOf(w));
-                }
-            }else if(visited[w] && w != parent){
+            }else if(visited[w] && w != parent)
                 low[source] = Math.min(low[source], low[w]);
-            }
         }
+
     }
+
     public HashSet<String> getBridge(){
         return bridge;
     }

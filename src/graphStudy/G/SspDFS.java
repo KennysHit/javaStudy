@@ -1,4 +1,4 @@
-package graphStudy;
+package graphStudy.G;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,10 +7,10 @@ import java.util.Collections;
  * 深度优先遍历的单一源路径查找
  */
 public class SspDFS {
+
 	private Graph graph;
 	private int sourcePoint; //源点
 	private int target; //终点
-	
 	private int[] pre;
 	private boolean[] visited;
 	
@@ -28,12 +28,11 @@ public class SspDFS {
 		visited = new boolean[graph.getV()];
 		pre = new int[graph.getV()];
 		
-		for(int i=0;i<graph.getV();i++) {
+		for(int i=0;i<graph.getV();i++)
 			visited[i] = false;
-		}
-		for(int i=0;i<graph.getV();i++) {
+
+		for(int i=0;i<graph.getV();i++)
 			pre[i] = -1;
-		}
 		
 		dfs(sourcePoint, sourcePoint, target);
 	}
@@ -48,16 +47,15 @@ public class SspDFS {
 	private boolean dfs(int source, int parent, int target) {
 		visited[source] = true;
 		pre[source] = parent;
-		if(source == target) {
+
+		if(source == target)
 			return true;
-		}
-		for(int w: graph.getNeighbor(source)) {
-			if(!visited[w]) {
-				if(dfs(w, source, target)) {
+
+		for(int w: graph.getNeighbor(source))
+			if(!visited[w])
+				if(dfs(w, source, target))
 					return true;
-				}
-			}
-		}
+
 		return false;
 	}
 	
