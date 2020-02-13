@@ -117,6 +117,6 @@ public class WeightGraph {
 
     public static void main(String[] args) {
        WeightGraph weightGraph = new WeightGraph();
-       System.out.println(weightGraph.getWeightEdges());
+       System.out.println(weightGraph.getWeight(0, 1));
     }
 }

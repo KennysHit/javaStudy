@@ -5,6 +5,7 @@ import java.util.Collections;
 
 /**
  * 哈密顿路径
+ * 回溯法
  */
 public class HamiltonLoopDFS {
 

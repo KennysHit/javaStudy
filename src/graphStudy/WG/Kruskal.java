@@ -20,6 +20,7 @@ public class Kruskal {
 
         ArrayList<WeightEdge> weightEdges = new ArrayList<WeightEdge>();
 
+        //Kruskal
         for(int v=0;v<weightGraph.getV();v++)
             for(int w: weightGraph.getNeighbor(v))
                 if(v<w)
