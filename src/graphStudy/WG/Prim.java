@@ -2,6 +2,8 @@ package graphStudy.WG;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
  * 最小生成树
@@ -23,18 +25,22 @@ public class Prim {
         //Prim
         visited = new boolean[weightGraph.getV()];
         visited[0] = true;
-        for(int i=0;i<weightGraph.getV()-1;i++){
-            WeightEdge minWeightEdge = new WeightEdge(0, 0, Integer.MAX_VALUE);
+        Queue<WeightEdge> queue = new PriorityQueue<WeightEdge>();
 
-            for(int v=0;v<weightGraph.getV();v++)
-                if(visited[v])
-                    for(int w: weightGraph.getNeighbor(v))
-                        if(!visited[w] && weightGraph.getWeight(v, w)<minWeightEdge.getWeight())
-                            minWeightEdge = new WeightEdge(v, w, weightGraph.getWeight(v, w));
+        for(int w: weightGraph.getNeighbor(0))
+            queue.add(new WeightEdge(0, w, weightGraph.getWeight(0, w)));
 
+        while (!queue.isEmpty()){
+            WeightEdge minWeightEdge = queue.remove(); //在优先队列中每次remove()会去除最小的成员
+            if(visited[minWeightEdge.getV()] && visited[minWeightEdge.getW()])
+                continue;
             minSpanTree.add(minWeightEdge);
-            visited[minWeightEdge.getW()] = true;
-            visited[minWeightEdge.getV()] = true;
+            int newv = visited[minWeightEdge.getV()] ? minWeightEdge.getW() : minWeightEdge.getV();
+            visited[newv] = true;
+
+            for (int w: weightGraph.getNeighbor(newv))
+                if(!visited[w])
+                    queue.add(new WeightEdge(newv, w, weightGraph.getWeight(newv, w)));
         }
 
     }
