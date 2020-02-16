@@ -51,7 +51,7 @@ public class Prim {
 
 
     public static void main(String[] args) {
-        WeightGraph weightGraph = new WeightGraph();
+        WeightGraph weightGraph = new WeightGraph("graphData/graph.txt");
         Prim prim = new Prim(weightGraph);
         System.out.println(prim.getMinSpanTree());
     }

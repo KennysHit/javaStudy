@@ -18,11 +18,11 @@ public class WeightGraph {
     private TreeMap<Integer, Integer>[] adj;
 
     @SuppressWarnings("unchecked")
-    public WeightGraph() {
+    public WeightGraph(String fileName) {
         Scanner scanner1;
-
+        File file = new File(fileName);
         try {
-            scanner1 = new Scanner(new File("graphData/graph.txt"));
+            scanner1 = new Scanner(file);
             V = scanner1.nextInt();
             adj = new TreeMap[V];
             weightEdges = new ArrayList<WeightEdge>();
@@ -85,7 +85,7 @@ public class WeightGraph {
             return false;
     }
 
-    private void validateVertex(int v){
+    public void validateVertex(int v){
         if(v<0 || v>=getV())
             throw new IllegalArgumentException(String.format("Has No Vertex %d",v));
     } //检验顶点名称的合法性
@@ -116,7 +116,7 @@ public class WeightGraph {
     }
 
     public static void main(String[] args) {
-       WeightGraph weightGraph = new WeightGraph();
+       WeightGraph weightGraph = new WeightGraph("graphData/graph.txt");
        System.out.println(weightGraph.getWeight(0, 1));
     }
 }

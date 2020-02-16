@@ -52,7 +52,7 @@ public class ConnectCount {
     }
 
     public static void main(String[] args) {
-        WeightGraph weightGraph = new WeightGraph();
+        WeightGraph weightGraph = new WeightGraph("graph.txt");
         ConnectCount connectCount = new ConnectCount(weightGraph);
 
         for(int i=0;i<connectCount.getCount();i++)
