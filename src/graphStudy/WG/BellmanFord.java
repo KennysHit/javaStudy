@@ -10,7 +10,6 @@ public class BellmanFord {
     private int source;
     private int[] dis;
     private int[] pre;
-    private boolean hasNegativeCycle;
 
     public BellmanFord(WeightGraph weightGraph, int source){
         this.weightGraph = weightGraph;
@@ -31,21 +30,25 @@ public class BellmanFord {
                         pre[w] = v;
                     }
         }
-        for (int v=0;v<weightGraph.getV();v++)
-            for (int w: weightGraph.getNeighbor(v))
-                if(dis[w]!=Integer.MAX_VALUE && dis[w]>dis[v] + weightGraph.getWeight(v, w))
-                    hasNegativeCycle = true;
     }
 
     public boolean hasNegativeCycle(){
-        return hasNegativeCycle;
+        for (int v=0;v<weightGraph.getV();v++)
+            for (int w: weightGraph.getNeighbor(v))
+                if(dis[w]!=Integer.MAX_VALUE && dis[w]>dis[v] + weightGraph.getWeight(v, w))
+                    return true;
+        return false;
     }
 
     public int distanceTo(int t){
         weightGraph.validateVertex(t);
 
-        if (hasNegativeCycle==true)
-            throw new RuntimeException("has hasNegativeCycle!");
+        if (!isConnectedTo(t))
+            throw new RuntimeException("source can not connected to " + t);
+
+        if (hasNegativeCycle())
+            throw new RuntimeException("exists negative cycle!");
+
         return dis[t];
     }
 
@@ -60,11 +63,11 @@ public class BellmanFord {
 
         ArrayList<Integer> arrayList = new ArrayList<Integer>();
 
-        if (hasNegativeCycle==true)
+        if (hasNegativeCycle())
             throw new RuntimeException("has hasNegativeCycle!");
 
         if (!isConnectedTo(t))
-            return arrayList;
+            throw new RuntimeException("source can not connected to " + t);
 
         while (t!=source){
             arrayList.add(t);
@@ -81,7 +84,7 @@ public class BellmanFord {
         BellmanFord bellmanFord = new BellmanFord(weightGraph, 0);
         System.out.println(bellmanFord.findPath(2));
         System.out.println(bellmanFord.distanceTo(2));
-        System.out.println("hasNegativeCycle: " + bellmanFord.hasNegativeCycle);
+        System.out.println("hasNegativeCycle: " + bellmanFord.hasNegativeCycle());
     }
 
 }

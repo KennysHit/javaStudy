@@ -14,7 +14,9 @@ public class Dijkstra {
     private int[] pre;
 
     private class Node implements Comparable{
+
         public int v, dis;
+
         public Node(int v, int dis){
             this.v = v;
             this.dis = dis;
@@ -22,10 +24,14 @@ public class Dijkstra {
 
         @Override
         public int compareTo(Object o) {
+
             if(o instanceof Node)
                 return dis - ((Node) o).dis;
+
             throw new IllegalArgumentException(String.format("Error Of Object Type!"));
+
         }
+
     }
 
     public Dijkstra(WeightGraph weightGraph, int source){
@@ -59,8 +65,10 @@ public class Dijkstra {
     }
 
     public boolean isConnectedTo(int t){
+
         weightGraph.validateVertex(t);
         return visited[t];
+
     }
 
     public Iterable<Integer> findPath(int t){
@@ -68,7 +76,9 @@ public class Dijkstra {
         weightGraph.validateVertex(t);
 
         ArrayList<Integer> arrayList = new ArrayList<Integer>();
-        if (!isConnectedTo(t)) return arrayList;
+
+        if (!isConnectedTo(t))
+            throw new RuntimeException("source can not connected to " + t);
 
         while (t!=source){
             arrayList.add(t);
@@ -80,9 +90,11 @@ public class Dijkstra {
         return arrayList;
     }
 
-    public int distanceTo(int w){
-        weightGraph.validateVertex(w);
-        return distance[w];
+    public int distanceTo(int t){
+        weightGraph.validateVertex(t);
+        if (!isConnectedTo(t))
+            throw new RuntimeException("source can not connected to " + t);
+        return distance[t];
     }
 
     public static void main(String[] args) {

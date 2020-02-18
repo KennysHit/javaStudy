@@ -87,7 +87,7 @@ public class WeightGraph {
 
     public void validateVertex(int v){
         if(v<0 || v>=getV())
-            throw new IllegalArgumentException(String.format("Has No Vertex %d",v));
+            throw new IllegalArgumentException(String.format("has no vertex %d",v));
     } //检验顶点名称的合法性
 
     private Iterable<WeightEdge> getWeightEdges(){
