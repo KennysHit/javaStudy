@@ -116,7 +116,7 @@ public class WeightGraph {
     }
 
     public static void main(String[] args) {
-       WeightGraph weightGraph = new WeightGraph("graphData/graph.txt");
+       WeightGraph weightGraph = new WeightGraph("graphData/weightGraph.txt");
        System.out.println(weightGraph.getWeight(0, 1));
     }
 

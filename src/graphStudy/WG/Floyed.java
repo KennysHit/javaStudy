@@ -62,7 +62,7 @@ public class Floyed {
     }
 
     public static void main(String[] args) {
-        WeightGraph weightGraph = new WeightGraph("graphData/graph.txt");
+        WeightGraph weightGraph = new WeightGraph("graphData/weightGraph.txt");
         Floyed floyed = new Floyed(weightGraph);
         System.out.println(floyed.distanceTo(2, 6));
     }

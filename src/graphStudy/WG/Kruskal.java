@@ -45,7 +45,7 @@ public class Kruskal {
 
 
     public static void main(String[] args) {
-        WeightGraph weightGraph = new WeightGraph("graphData/graph.txt");
+        WeightGraph weightGraph = new WeightGraph("graphData/weightGraph.txt");
         Kruskal kruskal = new Kruskal(weightGraph);
         System.out.println(kruskal.getMinSpanTree());
     }

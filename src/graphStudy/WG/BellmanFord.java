@@ -80,7 +80,7 @@ public class BellmanFord {
     }
 
     public static void main(String[] args) {
-        WeightGraph weightGraph = new WeightGraph("graphData/graph.txt");
+        WeightGraph weightGraph = new WeightGraph("graphData/weightGraph.txt");
         BellmanFord bellmanFord = new BellmanFord(weightGraph, 0);
         System.out.println(bellmanFord.findPath(2));
         System.out.println(bellmanFord.distanceTo(2));
