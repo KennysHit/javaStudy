@@ -9,6 +9,7 @@ import java.util.Queue;
  * 最小生成树
  */
 public class Prim {
+
     private WeightGraph weightGraph;
     private boolean[] visited;
     private ArrayList<WeightEdge> minSpanTree;
@@ -48,7 +49,6 @@ public class Prim {
     public Iterable<WeightEdge> getMinSpanTree(){
         return minSpanTree;
     }
-
 
     public static void main(String[] args) {
         WeightGraph weightGraph = new WeightGraph("graphData/graph.txt");

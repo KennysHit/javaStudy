@@ -43,4 +43,5 @@ public class WeightEdge implements Comparable{
 
         throw new IllegalArgumentException(String.format("Error Of Object Type!"));
     }
+
 }

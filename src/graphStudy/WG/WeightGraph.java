@@ -119,4 +119,5 @@ public class WeightGraph {
        WeightGraph weightGraph = new WeightGraph("graphData/graph.txt");
        System.out.println(weightGraph.getWeight(0, 1));
     }
+
 }

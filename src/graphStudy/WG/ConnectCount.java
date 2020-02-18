@@ -28,6 +28,7 @@ public class ConnectCount {
     }
 
     public void dfs(int source, int cid){
+
         visited[source] = cid;
 
         for (int w: weightGraph.getNeighbor(source))
@@ -59,4 +60,5 @@ public class ConnectCount {
             System.out.println(connectCount.getConnects()[i]);
 
     }
+
 }
